@@ -7,15 +7,17 @@ public class NumberWizard : MonoBehaviour
 {
     int max;
     int min;
-    int guess;
+    public int guess;
     public Text textGuess;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         max = 100;
         min = 1;
-        guess = 50;
+        guess = Random.Range(1,100);
+        textGuess.text = guess.ToString();
     }
 
     // Update is called once per frame
@@ -24,10 +26,12 @@ public class NumberWizard : MonoBehaviour
         
     }
 
+ 
     void guessNext()
     {
         guess = (min + max) /2;
         textGuess.text = guess.ToString();
+        CountScript.CountValue++;
     }
 
     public void ButtonLow()
@@ -49,4 +53,6 @@ public class NumberWizard : MonoBehaviour
         Debug.Log("correct guess");
         SceneManager.LoadScene("SceneFinish", LoadSceneMode.Single);
     }
+
+ 
 }
